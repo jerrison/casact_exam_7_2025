@@ -1,0 +1,173 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{cancel}
+
+
+\title{CASACT Exam 7 Notes}
+\author{Jerrison Li }
+\date{January 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Benktander Method}
+
+\subsection{General Relationship Between Reserve \& Ultimate Loss Estimates }
+
+Suppose that $C_k$ is the actual claims amount paid after \textit{k} years of
+development. Given a \textbf{reserve estimate} $\widehat{R}$ and 
+\textbf{ultimate loss estimate} $\widehat{U}$, we have the following general
+relationship:
+
+\begin{equation}
+\widehat{U} = C_k + \widehat{R}
+\end{equation}
+
+This relationship always holds. Note that $C_k$ is the cumulative paid amount.
+
+
+
+\subsection{Bornhuetter/Ferguson (BF) Method }
+
+The \textbf{Bornhuetter/Ferguson (BF) Method} estimates reserves based on an
+\textbf{a priori} expectation of ultimate losses. Mathematically:
+
+\begin{equation}
+R_{BF} = q_k * U_0
+\end{equation}
+
+where:
+
+\begin{itemize}
+    \item $R_{BF}$ is the \textbf{reserve estimate}
+    \item $q_k = 1 - \frac{1}{CDF}$ is the proportion of the ultimate claims
+amount which is expected to remain unpaid after \textit{k} years of development
+    \item $U_0$ is the a priori expectation of ultimate losses
+\end{itemize}
+
+Since $R_{BF}$ uses $U_0$, it assumes that the current claims amount $C_k$ is
+\textbf{NOT predictive of future claims}.
+
+\bigskip
+
+Using the general relationship described above, we obtain the \textbf{BF
+ultimate loss}:
+
+\begin{equation}
+U_{BF} = C_k + R_{BF}
+\end{equation}
+
+\subsection{Chain Ladder Method }
+
+The \textbf{Chain Ladder Method} estimates ultimate losses and reserves based
+on claims to date. In other words, it assumes that the current claims amount
+$C_k$ is \textbf{fully predictive of future claims}. Mathematically:
+
+\begin{equation}
+U_{CL} = \frac{C_k}{p_k}
+\end{equation}
+
+\begin{equation}
+R_{CL} = q_k * U_{CL}
+\end{equation}
+
+\subsection{Benktander Method }
+
+Since the CL and BF methods represent extreme positions, where the CL method
+fully believes $C_k$ and the BF method does not rely on $C_k$ at all, Gunnar
+Benktander replaced $U_0$ with a credibility mixture:
+
+\begin{equation}
+U_c = c * U_{CL} + (1 - c) * U_0
+\end{equation}
+
+where $c$ is the credibility weight.
+
+\bigskip
+
+As the claims $C_k$ develop, credibility should increase, Benktander proposed 
+the following:
+
+\begin{itemize}
+    \item Set $c = p_k$
+    \item Set $R_{GB} = R_{BF} * \frac{U_{pk}}{U_0}$
+\end{itemize}
+
+\begin{equation}
+    \begin{aligned}
+    R_{GB} &= \color{blue}{R_{BF}} &* \color{black}\frac{U_{pk}}{U_0} \\
+    &= (\color{blue}{q_k * \cancel{U_o}}) &* 
+        \color{black}\frac{U_{pk}}{\cancel{U_o}} \\
+    &= q_k * U_{pk}
+    \end{aligned}
+\end{equation}
+
+\subsubsection{BF Method as a Credibility-Weighted Average}
+    
+Using our credibility mixture with $c = p_k$, we can show the following:
+
+\begin{equation}
+    \begin{aligned}
+    U_{pk} &= p_k * U_{CL} + (1 - p_k) * U_0 \\
+    &= p_k * U_{CL} + q_k * U_0 \\
+    &= C_k + R_{BF} \\
+    &= U_{BF}
+    \end{aligned}
+\end{equation}
+
+then 
+
+\begin{equation}
+    \begin{aligned}
+    R_{GB} &= q_k * U_{BF} \\
+    \end{aligned}
+\end{equation}
+
+Hence, the \textbf{BF method} is a credibility-weighted average of the CL method
+and the a priori expectation.
+
+\subsubsection{Benktander Method as a Credibility-Weighted Average}
+
+The \textbf{Benktander method} is a credibility-weighted average of the CL and
+BF methods:
+
+\begin{equation}
+    \begin{aligned}
+    U_{GB} &= C_k & + R_{GB} \\
+    &= \color{blue}{C_k} & + q_k * U_{BF} \\
+    &= \color{blue}{(1-q_k) * U_{CL}} & + q_k * U_{BF} \\
+    % &= \color{blue}{p_k * U_{CL}} & + q_k * q_k * U_0 \\
+    % &= \color{blue}{(1-q_k) * U_{CL}} & + q_k * q_k * U_0 \\
+    % &= \color{blue}{(1-q_k) * U_{CL}} & + q_k^2 * U_0 \\
+    \end{aligned}
+\end{equation}
+
+The \textbf{Benktander reserve} is also a credibility-weighted average of the CL
+and BF methods:
+
+\begin{equation}
+    \begin{aligned}
+    R_{GB} &= (1-q_k) * R_{CL} + q_k^2 * R_0 \\
+    \end{aligned}
+\end{equation}
+
+We can also express the Benktander method as a credibility-weighted average of
+the CL method and the a priori expectation:
+
+\begin{equation}
+    \begin{aligned}
+    U_{GB} &= C_k  + R_{GB} \\
+    &= \color{blue}{U_{CL} - \color{red}R_{CL}}  + q_k * U_{pk} \\
+    &= \color{blue}{U_{CL} - \color{red}q_k * U_{CL}}  + q_k * ([1-q_k] * U_{CL} + q_k * U_0) \\
+    &= \color{blue}{U_{CL} - \cancel{\color{red}q_k * U_{CL}}}  + \cancel{q_k * U_{CL}} - q_k^2 * U_{CL} + q_k^2 * U_0 \\
+    &= \color{blue}{U_{CL}}   \color{black}- q_k^2 * U_{CL} + q_k^2 * U_0 \\
+    &= (1-q_k^2) * U_{CL} + q_k^2 * U_0 \\
+    &= U_{1-q_k^2}
+    \end{aligned}            
+\end{equation}
+
+\end{document}

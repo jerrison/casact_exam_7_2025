@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "Live Preview",
+      "workspacePath": "/Users/jerrison/00-learning/03-casact-exam-7-2025",
+      "problemMatcher": [],
+      "label": "Live Preview: Run Server",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
