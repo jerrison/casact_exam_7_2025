@@ -266,4 +266,49 @@ $c^*$ is the optimal credibility reserve credibility factor.
 Note that each of the highlighted diagonal rows represent the same
 calendar development period.
 
+\newpage
+\section{Brosius}
+
+\subsection{Least Squares Method}
+
+\begin{itemize}
+  \item $x =$ losses to date
+  \item $y =$ losses at a future evaluation
+\end{itemize}
+
+\subsubsection{Link Ratio Method}
+where $c$ is the selected link ratio. For the purposes of this paper, we will
+assume that \textbf{$c$ is the volume-weighted average LDF.}
+
+\subsection{Testing the least squares method using loss \& loss
+reporting distributions}
+
+\subsubsection{Simple Model}
+
+\begin{itemize}
+  \item The number of claims incurred each year is a random variable
+    $Y$ which is either 0 or 1 with equal probability.
+  \item The number of claims reported by year-end is a random
+    variable $X$. If there is a claim, there is a 50 chance it will
+    be reported by year-end. Hence, X is a binomial random variable
+    with $n = y$ and $p = 0.5$.
+
+\end{itemize}
+
+Let $Q(x)$ represent the expected total number of claims, and $R(x)$
+represent the expected number of claims outstanding, both given that
+$X=x    ,$. Mathematically:
+
+$Q(0) = 1/3$
+$Q(1) = 1$
+
+\subsection{The linear approximation (Bayesian Credibility)}
+
+Let $L$ be the best linear approximation to $Q$. Mathematically, $L$
+is the linear function that minimizes $E_{X}[(Q(x) - L(x))^2]$.
+
+Assuming $L(x) = a + bx$, we must minimize $E_{X}[(Q(x) - a - bX)]^2$.
+
+\subsubsection{Development Formula 1}
+
 \end{document}
